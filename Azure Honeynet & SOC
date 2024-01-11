@@ -3,21 +3,20 @@
 
 ## Summary
 
-In this project, a honeynet and Security Operations Center (SOC) were constructed within Azure. The objective was to capture logs from several sources, analyze the logs, and consolidate them within a Log Analytics workspace. Microsoft Sentinel was deployed and configured to read the logs and generate attack maps, trigger alerts, and create incidents. After the honeynet was configured, the first deployment phase was initiated and an unsecured version of the environment was exposed to the internet for a 24-hour period. After the first deployment, several security controls were implemented to harden the environment. Once the environment was secure, the second deployment phase was initiated and the environment was once again exposed to the internet for a 24-hour period. The project concluded when the metrics from both 24-hour periods were logged and compared. 
+In this project, a honeynet and Security Operations Center (SOC) were constructed within Azure. The goal was to capture, analyze, and consolidate logs within a Log Analytics Workspace. Microsoft Sentinel was used to read the logs, generate attack maps, trigger alerts, and create incidents. After the honeynet was created, the first phase was using an unsecured version of the environment and exposing it to the internet for a 24-hour period. After the first phase, several security controls were implemented to harden the environment. Once this was done, the second phase started where we again exposed the environment to the internet for 24 hours. The project ended when both 24-hour periods were logged and compared. 
 
-The metrics analyzed were:
+Metrics analyzed were:
 - SecurityEvent (Windows Event Logs)
 - Syslog (Linux Event Logs)
 - SecurityAlert (Log Analytics Alerts Triggered)
-- SecurityIncident (Incidents created by Sentinel)
 - AzureNetworkAnalytics_CL (Malicious Flows allowed into the honeynet)
 
-## Technologies, Azure Components, and Regulations Used
+## Technologies, Components, and Regulations
 - Azure Virtual Network (VNet)
 - Azure Network Security Groups (NSG)
-- Virtual Machines (Windows VM and Linux VM)
+- Virtual Machines (2 Windows VMs and 2 Linux VMs)
 - Log Analytics Workspace with Kusto Query Language (KQL) Queries
-- Azure Key Vault for Secure Secrets Management
+- Azure Key Vault
 - Azure Storage Account for Data Storage
 - Microsoft Sentinel for Security Information and Event Management (SIEM)
 - Microsoft Defender for Cloud to Protect Cloud Resources
@@ -25,9 +24,9 @@ The metrics analyzed were:
 - Command Line Interface (CLI) for System Management
 - PowerShell for Automation and Configuration Management
 - [NIST SP 800-53 Revision 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) for Security Controls
-- [NIST SP 800-61 Revision 2](https://www.nist.gov/privacy-framework/nist-sp-800-61) for Incident Handling Guidance
+- [NIST SP 800-61 Revision 2](https://www.nist.gov/privacy-framework/nist-sp-800-61) for Incident Handling
 
-## Architecture Before Hardening / Security Controls
+## Architecture Before Hardening / Controls
 ![Architecture Before Hardening](https://github.com/DaneTrain05/Projects/assets/48533052/afaf8dc4-564c-4816-965d-4885eb970258)
 
 
@@ -79,11 +78,11 @@ Stop Time 11/8/2023 @ 3:12:57 PM
 ## Architecture After Hardening / Security Controls
 ![Architecture After Hardening](https://github.com/DaneTrain05/Projects/assets/48533052/38796d18-b6db-4bb7-8bb5-c230f1ef9d3d)
 
-The purpose of this phase was to harden the environment and implement security controls to ensure compliance with NIST SP 800-53 Revision 5 SC-7(3) Access Points. 
+The purpose here was to harden the environment and implement security controls. We based these controls on regulations to ensure compliance with NIST SP 800-53 Revision 5 SC-7(3) Access Points. 
 
-These hardening tactics included:
+Hardening included:
 - Network Security Groups (NSGs)
-  - NSGs were hardened by blocking all inbound and outbound traffic, with the exception of designated public IP addresses that required access to the virtual machines. This ensured only authorized traffic from trusted sources were allowed to access the virtual machines.
+  - NSGs were hardened by blocking all inbound and outbound traffic, with the exception of certain public IP addresses that required access to the virtual machines. This made sure that only authorized traffic from trusted sources were allowed to access the virtual machines.
 
 - Built-in Firewalls
   - Azure's built-in firewalls were configured on the virtual machines to restrict unauthorized access and protect the resources from malicious connections. This step involved fine-tuning the firewall rules based on the service and responsibilities of each virtual machine. This step significantly shrunk the attack surface of the environment.
