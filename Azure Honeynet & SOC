@@ -71,11 +71,10 @@ Stop Time 11/8/2023 @ 3:12:57 PM
 
 | Metric                                                               | Count
 | -------------------------------------------------------------------- | -----
-| SecurityEvent (Windows Event Logs)                                   | 22456
-| Syslog (Linux Event Logs)                                            | 1360
+| SecurityEvent (Windows Event Logs)                                   | 24062
+| Syslog (Linux Event Logs)                                            | 4527
 | SecurityAlert (Log Analytics Alerts Triggered)                       | 2
-| SecurityIncident (Incidents created by Sentinel)                     | 153
-| AzureNetworkAnalytics_CL (Malicious flows allowed into the honeynet) | 3600
+| AzureNetworkAnalytics_CL (Malicious flows allowed into the honeynet) | 6408
 
 ## Architecture After Hardening / Security Controls
 ![Architecture After Hardening](https://github.com/DaneTrain05/Projects/assets/48533052/38796d18-b6db-4bb7-8bb5-c230f1ef9d3d)
@@ -92,24 +91,19 @@ These hardening tactics included:
 - Private Endpoints
   - To enhance the security of Azure Key Vault and Storage Containers, the Public Endpoints were replaced with Private Endpoints. This ensured access to these sensitive resources was limited to the virtual network and not the public internet.
 
-## Attack Maps Before Hardening / Security Controls
+## Attack Maps After Hardening / Security Controls
 
-```All map queries returned no results. This is due to there being no instances of malicious activity for the 24-hour period after hardening.```
+```All map queries returned no results. This is because there was no malicious activity for the 24-hour testing period.```
 
 ## Metrics After Hardening / Security Controls
 
-The following table shows the metrics measured within the secured environment over its 24-hour exposure to the internet:
-
-Start Time 11/12/2023 @ 4:16:41 PM
-
-Stop Time 11/13/2023 @ 4:16:41 PM
+The following table shows metrics within the secured environment over the 24-hour testing period:
 
 | Metric                                                               | Count
 | -------------------------------------------------------------------- | -----
 | SecurityEvent (Windows Event Logs)                                   | 7486
 | Syslog (Linux Event Logs)                                            | 5
 | SecurityAlert (Log Analytics Alerts Triggered)                       | 0
-| SecurityIncident (Incidents created by Sentinel)                     | 0
 | AzureNetworkAnalytics_CL (Malicious flows allowed into the honeynet) | 0
 
 ## Results from Hardening and Implementing Security Controls
@@ -121,7 +115,6 @@ The following table shows a quantitative comparison between the 24-hour period w
 | SecurityEvent (Windows Event Logs)                                   | -66.66%
 | Syslog (Linux Event Logs)                                            | -99.63%
 | SecurityAlert (Log Analytics Alerts Triggered)                       | -100.00%
-| SecurityIncident (Incidents created by Sentinel)                     | -100.00%
 | AzureNetworkAnalytics_CL (Malicious flows allowed into the honeynet) | -100.00%
 
 
